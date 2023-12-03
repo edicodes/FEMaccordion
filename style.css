@@ -1,0 +1,262 @@
+@font-face {
+    font-family: WorkSans;
+    src: url(./assets/fonts/WorkSans-VariableFont_wght.ttf);
+  }
+
+ /* SETUP and RESET */
+
+/* Cntrl+shift+K deletes the line you’re on without having to select it (and without copying to clipoard)  */
+
+/* Shift+home or Shift+End to select line from the end or start,
+respectively  */
+
+/* How to wrap existing content....? In VSCode its Cmd + Shift + P*/
+
+:root {
+
+    --fs-h1-clamp: clamp(2.25rem, 1.0184rem + 2.683vw, 2.5rem);
+    --fs-h2-clamp: clamp(1rem, 0.8818rem + 2.0723vw, 1.325rem);
+    --fs-h3-clamp: clamp(1.325rem, 0.7607rem + 1.75vw, 2.125rem);
+    --fs-body-clamp: clamp(1rem, 0.6548rem + 1.2259vw, 1.2581rem);
+    --fs-small-clamp: clamp(0.625rem, 0.4821rem + 0.7143vw, 1.125rem);
+
+
+    --ff-primary: WorkSans;
+
+    --fs-h1: var(--fs-h1-clamp);
+    --fs-h2: var(--fs-h2-clamp);
+    --fs-h3: var(--fs-h3-clamp);
+    --fs-body: var(--fs-body-clamp);
+    --fs-small: var(--fs-small-clamp);
+
+    --clr-primary: hsl(292, 16%, 49%);
+    --clr-headings: hsl(292, 42%, 14%);
+    --clr-neutral-100: #FFF;
+    --clr-neutral-900: #000;
+
+    --clr-bg-body: hsl(275, 100%, 97%);
+    --clr-bg-card: #FFF;
+
+    --min-width: 30rem;
+    --width-min: min(100%, var(--min-width));
+}
+
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+
+li {
+    list-style: none;
+}
+
+
+
+button {  
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    border: none;
+    cursor: pointer; 
+}
+
+::-webkit-scrollbar {
+    height: 4px;
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: var(--clr-accent);
+}
+
+ ::selection {
+    background-color: var(--clr-primary);
+ }
+
+.sr-only {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+
+
+/* **********UTILITY CLASSES********** */
+
+
+
+/* GRID AND FLEX UTILITY CLASSES */
+.row {
+    display: flex;
+
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid {
+    display: grid;
+}
+
+.pc-cen {
+    place-content: center;
+}
+
+
+
+
+.ai-cen {
+    align-items: center;
+}
+
+
+
+
+
+.jc-cen {
+    justify-content: center;
+}
+
+
+
+.jc-sb {
+    justify-content: space-between;
+}
+
+.gap-1 {
+    gap: 1em;
+}
+
+.gap-half {
+    gap: .5em;
+}
+
+.gap-quarter {
+    gap: .25em;
+}
+
+/* ELEMENT SELECTORS */
+body {
+    margin: 0;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    font-weight: 400;
+    line-height: 1.4; 
+    color: var(--clr-primary);
+    background: var(--clr-bg-body); 
+    min-height: 100vh;
+} 
+
+
+h1 {
+    font-size: var(--fs-h1);
+    text-wrap: balance;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--clr-headings);
+}
+
+h2 {
+    font-size: var(--fs-h2);
+    line-height: 1;
+    font-weight: 600;
+    color: var(--clr-headings);
+}
+
+/* LAYOUT */
+
+.card {
+    background-color: var(--clr-bg-card);
+    padding: 1em; 
+    width: min(100% - 1em, 360px);
+    margin-inline: auto;
+    margin-block-start: -8%;
+    border-radius: .5em;
+}
+
+/* PROJECT SPECIFIC STYLES */
+
+.header {
+    background-image: url(./assets/images/background-pattern-desktop.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 5em;
+}
+
+.btn-wrap {
+    background-image: url(./assets/images/icon-plus.svg);
+    transition: background-image 300ms; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.btn-wrap:is(:focus) {
+    scale: 2;
+}
+
+.btn-wrap.minus {
+    background-image: url(./assets/images/icon-minus.svg);
+}
+
+ul:has(h1) {
+    margin-block: 1em;
+}
+
+ul:has(h2) {
+    padding-block: .75em .5em;
+}
+
+.accordion {
+    padding-block-end: .25em;
+}
+
+.accordion:not(:last-child) {
+    border-bottom: 1px solid rgb(47, 21, 51, .4)
+}
+
+.accordion-content {
+    height: 0;
+    overflow: hidden;
+}
+
+.accordion-content.expanded {
+    height: auto;
+    overflow: hidden;
+}
+
+
+@media (width > 400px) {
+    .header {
+        background-image: url(./assets/images/background-pattern-desktop.svg);
+    }
+
+    .card {
+        width: min(100% - 2em, 650px)
+    }
+}
